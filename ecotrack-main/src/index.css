@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+*{
+   scroll-behavior: smooth;
+}
+
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+#log{
+
+  background-color: #00000090;
+}
+
+#log1{
+   
+  background-color: #00000090;
+}
+
+::-webkit-scrollbar{
+  display: none;
+}
