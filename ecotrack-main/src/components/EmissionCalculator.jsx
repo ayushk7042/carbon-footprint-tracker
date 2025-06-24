@@ -1,7 +1,23 @@
-//
 import { useState } from "react";
+import axios from "axios";
 import { FaLeaf, FaBus, FaExclamationTriangle } from "react-icons/fa";
 import { motion } from "framer-motion";
+
+const saveEmissionData = async (data) => {
+  const token = localStorage.getItem("token");
+  try {
+    const res = await axios.post(
+      "http://localhost:5000/api/emissions/save",
+      data,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+    alert(res.data.message);
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 const EmissionCalculator = () => {
   const [formData, setFormData] = useState({
@@ -50,6 +66,7 @@ const EmissionCalculator = () => {
     const totalFixed = total.toFixed(2);
     setEmissionResult(totalFixed);
     setAdvice(getAdvice(total));
+    saveEmissionData(formData);
   };
 
   const getAdvice = (emission) => {
