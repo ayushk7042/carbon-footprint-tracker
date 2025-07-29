@@ -1,2 +1,0 @@
-# carbon-footprint-tracker
-calculate
